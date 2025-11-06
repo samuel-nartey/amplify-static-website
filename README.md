@@ -105,7 +105,8 @@ Reference
 For the official documentation and latest installation instructions, visit:
  AWS Amplify CLI Installation Guide
 
-Initializing amplify cli
+### **Initializing amplify cli**
+
 ```bash
 mkdir amplify-static-site
 cd amplify-static-site

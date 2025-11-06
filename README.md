@@ -1,9 +1,3 @@
-Perfect — you’ve provided the architecture diagram for your **AWS Amplify Static Website Hosting project**, showing how Amplify CLI, CloudFormation, S3, and CloudFront interact in both **Deployment Flow** and **Content Delivery Flow**.
-
-Below is a **comprehensive, professional README.md** draft written to meet **internal documentation and recruiter standards** — with clear technical explanations, step-by-step setup instructions, and places for you to later insert screenshots.
-
----
-
 #  AWS Amplify Static Website Hosting Project
 
 ##  Overview
@@ -69,8 +63,49 @@ Each section below represents a major stage in the project.
 
 ---
 
-### **Step 1: Initialize Your Project Folder**
+### **Step 1: Install amplify and Initialize Your Project Folder**
 
+Installing the AWS Amplify CLI
+
+Before initializing your project, ensure the Amplify CLI is installed on your system. The CLI allows you to configure, deploy, and manage AWS backend and frontend resources directly from the terminal.
+
+For macOS and Linux Users
+
+Run the following command in your terminal to install the Amplify CLI using cURL:
+
+curl -sL https://aws-amplify.github.io/amplify-cli/install | bash && $SHELL
+
+
+This script will:
+
+Download and install the latest version of the Amplify CLI
+
+Automatically reload your shell so you can start using amplify immediately
+
+For Windows Users
+
+Run this command in Command Prompt or PowerShell:
+
+curl -sL https://aws-amplify.github.io/amplify-cli/install-win -o install.cmd && install.cmd
+
+
+If you don’t have cURL installed on your Windows machine:
+
+Visit https://aws-amplify.github.io/amplify-cli/install-win
+ in your web browser.
+
+Download the file manually.
+
+Rename it to install-win.cmd.
+
+Double-click or run it from the command line to begin the installation.
+
+Reference
+
+For the official documentation and latest installation instructions, visit:
+ AWS Amplify CLI Installation Guide
+
+Initializing amplify cli
 ```bash
 mkdir amplify-static-site
 cd amplify-static-site

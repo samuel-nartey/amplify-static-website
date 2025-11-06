@@ -302,6 +302,3 @@ amplify-static-site/
 ```
 
 ---
-
-Would you like me to include a **“Troubleshooting section”** at the end (e.g., common Amplify or CloudFront errors like 405/403 or missing index.html)?
-That would make it even more polished for recruiters and internal teams.

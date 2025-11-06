@@ -1,0 +1,11 @@
+{
+  "name": "amplifyclidemo",
+  "version": "1.0.0",
+  "description": "AWS Amplify CLI Demo",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "start": "",
+    "build": ""
+  }
+}

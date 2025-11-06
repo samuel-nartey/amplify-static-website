@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>Sammy's Amplify Demo</title>
+</head>
+<body>
+
+<div>
+    <h1>Hi there, welcome to my HTML page</h1>
+    <h3>This is a demo to explain how Amplify can be used to simplify the creation of a static website</h3>
+
+    <img src="AmplifyS3StaticWeb.drawio.png" alt="Architecture Diagram: AWS Amplify, S3, CloudFront Flow">
+    
+    <hr>
+    <h2>Architecture Flow Explanation</h2>
+
+    <p>This architecture illustrates the <strong>deployment and delivery of a static website</strong> using the <strong>AWS Amplify CLI</strong> and <strong>AWS CloudFormation</strong>, leveraging <strong>Amazon S3</strong> and <strong>Amazon CloudFront</strong> for efficient hosting and global content delivery.</p>
+
+    <h3>Deployment Flow</h3>
+    <ol>
+        <li><strong>Developer Action:</strong> The process starts when the <strong>Developer</strong> executes the <code>amplify hosting add</code> command, followed by <code>amplify publish</code>, using the <strong>AWS Amplify CLI</strong>.</li>
+        <li><strong>Configuration & Provisioning:</strong> The Developer selects the <strong>"Amazon CloudFront and S3"</strong> option. The Amplify CLI then uses this configuration to generate and execute an <strong>AWS CloudFormation</strong> template.</li>
+        <li><strong>Infrastructure Deployment:</strong> AWS CloudFormation deploys the necessary infrastructure, which creates the <strong>Static Website Hosting</strong> environment, including:
+            <ul>
+                <li>An <strong>Amazon S3</strong> bucket to securely store all the static website content.</li>
+                <li>An <strong>Amazon CloudFront</strong> distribution, which acts as a global Content Delivery Network (CDN).</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h3>End-User Access</h3>
+    <ol>
+        <li><strong>Request:</strong> An <strong>End-User</strong> makes a <strong>Request to the Website</strong>.</li>
+        <li><strong>Content Delivery:</strong> The request is routed through the high-speed <strong>Amazon CloudFront</strong> distribution, which serves the cached website files (retrieved from S3 as needed) back to the End-User with low latency.</li>
+    </ol>
+
+    <p>This automated system ensures the website is <strong>provisioned and published</strong> with global delivery capabilities via robust AWS infrastructure.</p>
+    <hr>
+</div>
+
+</body>
+</html>

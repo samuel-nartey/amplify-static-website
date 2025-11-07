@@ -6,7 +6,18 @@ This project demonstrates how to **deploy and host a static website** using **AW
 It follows a fully automated Infrastructure-as-Code (IaC) process using **AWS Amplify CLI** and **AWS CloudFormation**, enabling scalable, globally distributed, and secure content delivery.
 
 ---
+##  Folder Structure Example
 
+```
+amplify-static-site/
+│
+├── amplify/              # Amplify project files (auto-generated)
+├── src/ (optional)       # Source files if using frameworks
+├── index.html
+├── error.html
+├── README.md
+└── amplify.yml           # (optional) build settings
+```
 ##  Architecture Diagram
 
 ![Amplify Hosting Architecture](./AmplifyS3StaticWeb.drawio.png)
@@ -152,7 +163,8 @@ amplify init
   * Default editor
   * AWS profile to use (select one you configured with `aws configure`)
 
-*Insert screenshot: Amplify initialization success.*
+![Successful init in CloudFormation](Amplify_StaticWebsite_Screenshots/successful-init-in-cloudformation.png "Successful init in CloudFormation")
+
 
 ---
 
@@ -324,17 +336,5 @@ You have successfully:
 
 ---
 
-##  Folder Structure Example
-
-```
-amplify-static-site/
-│
-├── amplify/              # Amplify project files (auto-generated)
-├── src/ (optional)       # Source files if using frameworks
-├── index.html
-├── error.html
-├── README.md
-└── amplify.yml           # (optional) build settings
-```
 
 ---

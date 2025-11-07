@@ -17,7 +17,12 @@ amplify-static-site/
 ├── error.html
 ├── README.md
 └── amplify.yml           # (optional) build settings
+
 ```
+
+![Project structure](Amplify_StaticWebsite_Screenshots/project-structure.png "Project structure")
+
+
 ##  Architecture Diagram
 
 ![Amplify Hosting Architecture](./AmplifyS3StaticWeb.drawio.png)
@@ -49,7 +54,7 @@ amplify-static-site/
 * Learn to deploy and manage a **static website** using **AWS Amplify CLI**
 * Understand the interaction between **Amplify**, **CloudFormation**, **S3**, and **CloudFront**
 * Demonstrate a **production-grade static site delivery pipeline**
-* Showcase **IaC principles** and **DevOps deployment automation** for your portfolio
+* Showcase **IaC principles** and **DevOps deployment automation** for my portfolio
 
 ---
 
@@ -70,7 +75,7 @@ Before starting, ensure you have:
 ##  Step-by-Step Implementation
 
 Each section below represents a major stage in the project.
- *You can add screenshots after each step to make the README tutorial-rich.*
+ *I will add screenshots after each step to make the README tutorial-rich.*
 
 ---
 
@@ -110,6 +115,10 @@ Download the file manually.
 Rename it to install-win.cmd.
 
 Double-click or run it from the command line to begin the installation.
+
+
+![Installation of Amplify](Amplify_StaticWebsite_Screenshots/Installation-of-amplify.png "Installation of Amplify")
+
 
 Reference
 
@@ -183,9 +192,12 @@ Choose:
 * Index document: `index.html`
 * Error document: `error.html`
 
- *Insert screenshot: Hosting configuration selections.*
+
+![Amplify add hosting](Amplify_StaticWebsite_Screenshots/amplify-add-hosting.png "Amplify add hosting")
+
 
 ---
+
 
 ### **Step 4: Deploy the Website**
 
@@ -205,7 +217,8 @@ amplify publish
   ✔ Hosting endpoint: https://your-app-id.amplifyapp.com
   ```
 
- *Insert screenshot: Amplify publish output.*
+![Amplify publish update](Amplify_StaticWebsite_Screenshots/amplify-pulish-update.png "Amplify publish update")
+
 
 ---
 
@@ -219,21 +232,38 @@ https://your-app-id.amplifyapp.com
 
 You should see your website live.
 
- *Insert screenshot: Website live on Amplify.*
+
+![Updated website after Amplify redeploy](Amplify_StaticWebsite_Screenshots/website2.png "Updated website after Amplify redeploy")
+
 
 ---
 
-### **Step 6: Make and Redeploy Updates**
+Step 6: Make and Redeploy Updates
 
-Whenever you modify `index.html` or other files, simply run:
+Whenever you modify index.html or other files, simply run:
 
-```bash
 amplify publish
-```
+
 
 Amplify automatically detects file changes, syncs them to S3, invalidates CloudFront cache, and redeploys the latest version.
 
-📸 *Insert screenshot: Updated website after re-deploy.*
+However, during testing, I noticed that even after redeploying, the updated changes were not immediately visible.
+This happened due to CloudFront caching behavior — CloudFront was still serving the old cached version of the website.
+
+To fix this, I manually invalidated the CloudFront cache and then refreshed the browser.
+After doing so, the latest changes appeared correctly.
+
+
+![CloudFront invalidation process](Amplify_StaticWebsite_Screenshots/cloudfront-invalidation.png "CloudFront)
+CloudFront Cache Invalidation:
+
+
+After Cache Invalidation and Refresh:
+
+![Website](Amplify_StaticWebsite_Screenshots/website.png "Website")
+*Updated website after re-deploy.*
+New website version displayed correctly after invalidating CloudFront cache
+
 
 ---
 
@@ -275,7 +305,7 @@ Understanding the .gitignore File
 When AWS Amplify initializes your project, it automatically generates a .gitignore file.
 This file defines which local files and directories Git should ignore when committing or pushing your project to GitHub.
 
-The goal is to:
+## The goal is to:
 
 Protect sensitive information (like AWS configuration files)
 
@@ -283,7 +313,9 @@ Keep your repository lightweight
 
 Prevent environment-specific data from being shared
 
- Key Entries Explained
+ ### Key Entries Explained
+--- 
+```bash
 Ignored Path	Description
 amplify/#current-cloud-backend, amplify/.config/local-*, amplify/logs	Local Amplify environment files that store temporary backend info and logs — specific to your machine and environment.
 amplify/mock-*, amplify/backend/.temp	Used for local testing and mock APIs — not needed in production or version control.
@@ -291,7 +323,8 @@ build/, dist/	Compiled website files created during build — they can be regene
 node_modules/	Contains thousands of third-party dependencies; these can be reinstalled using npm install.
 aws-exports.js, awsconfiguration.json, amplifyconfiguration.json	Auto-generated AWS resource configuration files that may contain API endpoints and IDs. Keeping them private prevents credential leaks.
 .secret-*	Ensures secret or token files are never pushed to GitHub.
-**.sample	Skips placeholder files used for local demos or configuration templates.
+``` **.sample	Skips placeholder files used for local demos or configuration templates.
+ 
  Why This Matters
 
 Keeping your .gitignore intact ensures:
@@ -309,6 +342,9 @@ Best Practice
 Always keep the Amplify-generated .gitignore file unchanged unless you intentionally want to include specific folders.
 If you ever add new sensitive files (like .env or private keys), remember to include them in .gitignore.
 
+---
+
+
 ##  Clean-Up (Optional)
 
 To delete all resources and avoid costs:
@@ -324,6 +360,106 @@ This command will remove:
 * CloudFront distribution
 * CloudFormation stack
 
+
+All associated Amplify resources successfully removed.
+![Status after Amplify delete](Amplify_StaticWebsite_Screenshots/status-after-amplify-delete.png "Status after Amplify delete")
+
+
+
+Trying to Access the Website After Deletion:
+![Error after deletion](Amplify_StaticWebsite_Screenshots/error-after-deletion.png "Error after deletion")
+
+
+## Step 7: Initialize Git in Your Project Folder
+
+Make sure you’re in your project directory (the one that contains index.html, amplify/, and your README.md):
+
+`git init`
+
+
+This command creates a hidden .git folder that tracks changes in your project.
+
+![Local Git commands](Amplify_StaticWebsite_Screenshots/local-git-commandsng.png "Local Git commands")
+
+
+## Step 8: Check What Files Are Present
+
+Run:
+
+`git status`
+
+
+You’ll see a list of untracked files (these are all your project files before you commit them).
+
+
+This ensures sensitive or environment-specific files are not uploaded.
+
+
+
+## Step 9: Stage Your Files
+
+Add all files you want to track to Git:
+
+`git add .`
+
+
+This prepares them for the first commit.
+
+## Step 10: Commit Your Files
+
+`git commit -m "Initial commit - Amplify static website deployment"`
+
+
+Now your project’s first snapshot is saved locally.
+
+![Running Git commands](Amplify_StaticWebsite_Screenshots/running-git-commands.png "Running Git commands")
+
+
+## Step 11: Create a New GitHub Repository
+
+` Go to https://github.com/new `
+
+Give it a name (e.g., amplify-static-website)
+
+Add a description (e.g., “Static website hosted on AWS Amplify with S3 and CloudFront integration”)
+
+Keep it Public if you want to share it
+
+Don’t add a README or .gitignore — you already have them
+
+Once created, GitHub will show you a page with commands like this:
+
+```bash
+git remote add origin https://github.com/<your-username>/amplify-static-website.git
+git branch -M main
+git push -u origin main
+```
+![Adding repository to Amplify](Amplify_StaticWebsite_Screenshots/adding-repo.png "Adding repository to Amplify")
+
+![Git repository with remote URL](Amplify_StaticWebsite_Screenshots/git-repo-withurl.png "Git repository with remote URL")
+
+
+Run these commands exactly as shown (replace <your-username> with your actual GitHub username).
+
+ ## Step 12: Push Your Project to GitHub
+
+`git push -u origin main`
+
+
+This uploads your entire project to GitHub.
+
+Insert screenshot: GitHub repo showing files successfully uploaded.
+
+## Step 13: Future Updates
+
+Whenever you make changes (like editing index.html or updating your README):
+
+```bash
+git add .
+git commit -m "Updated index.html content"
+git push
+```
+This keeps your GitHub repo synced with your local changes.
 ---
 
 ##  Conclusion
